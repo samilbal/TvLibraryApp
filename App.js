@@ -25,7 +25,7 @@ const App = () => {
       <PersistGate persistor={persistor}>
         <NavigationContainer>
           <MainTab.Navigator
-            initialRouteName="LibraryStack"
+            initialRouteName="HomeStack"
             activeColor="black"
             // shifting
             barStyle={{ backgroundColor: "#441515" }}

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  View,
+} from "react-native";
 import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getUpcoming } from "../functions/getUpcoming";

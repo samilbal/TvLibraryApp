@@ -19,6 +19,7 @@ const LibraryScreen = ({ navigation }) => {
   };
 
   const allLists = useSelector((state) => state.list);
+  console.log(allLists);
   const listNames = Object.keys(allLists);
 
   return (
@@ -29,23 +30,15 @@ const LibraryScreen = ({ navigation }) => {
       }}
     >
       <SafeAreaView style={{ flex: 1 }}>
-        <Text style={styles.title}>Library Screen</Text>
-        <Button
-          title="+"
-          buttonStyle={{
-            backgroundColor: "rgb(44,54,66)",
-            width: 50,
-            borderRadius: 8,
-            marginLeft: 250,
-          }}
-          titleStyle={{
-            color: "white",
-            fontSize: 20,
-          }}
-          onPress={() => {
-            toggleOverlay();
-          }}
-        />
+        <View style={styles.container}>
+          <Text style={styles.title}>Your Lists: </Text>
+          <Button
+            title="+"
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.buttonTitle}
+            onPress={() => toggleOverlay()}
+          />
+        </View>
         <View>
           <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
             <Input
@@ -66,7 +59,6 @@ const LibraryScreen = ({ navigation }) => {
             />
           </Overlay>
         </View>
-        <Text style={{ color: "white" }}>Lists: </Text>
 
         <FlatList
           data={Object.keys(allLists)}
@@ -84,19 +76,37 @@ const LibraryScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   title: {
     marginLeft: 10,
+    marginRight: 15,
     marginBottom: 10,
-    marginRight: 10,
     fontSize: 20,
-    fontWeight: 800,
+    fontWeight: 500,
     borderBottomWidth: 2,
-    width: 290,
+    width: 235,
     color: "white",
+  },
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderColor: "red",
+    borderWidth: 2,
+    marginTop: 10,
   },
   inputContainer: {
     width: 200,
   },
   input: {
     textAlign: "center",
+  },
+  buttonStyle: {
+    backgroundColor: "rgb(44,54,66)",
+    width: 50,
+    borderRadius: 8,
+    marginRight: 10,
+  },
+  buttonTitle: {
+    color: "white",
+    fontSize: 20,
   },
 });
 

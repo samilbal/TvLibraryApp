@@ -22,12 +22,14 @@ const listSlice = createSlice({
       console.log(state);
     },
     add: (state, action) => {
-      console.log(action.payload.id);
-      state.watchLater.push({
-        id: action.payload.id,
-        title: action.payload.title,
-        poster_path: action.payload.poster_path,
-      });
+      // console.log(action.payload.id);
+      const checkedList = action.payload.list.checkedTitle;
+      console.log(action.payload.checkedTitle);
+      // state[checkedList].push({
+      //   id: action.payload.id,
+      //   title: action.payload.title,
+      //   poster_path: action.payload.poster_path,
+      // });
     },
   },
 });
