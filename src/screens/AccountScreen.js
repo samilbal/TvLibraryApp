@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Button } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { create, remove, empty } from "../features/listSlice";
+import { create, empty } from "../features/listSlice";
 
 const AccountScreen = ({ navigation }) => {
   const lists = useSelector((state) => state.list);
@@ -14,7 +14,7 @@ const AccountScreen = ({ navigation }) => {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#8333A6",
+        backgroundColor: "#ffcdb2",
       }}
     >
       <Text>Account Screen</Text>
@@ -33,7 +33,7 @@ const AccountScreen = ({ navigation }) => {
       <Button
         title="clg lists"
         onPress={() => {
-          console.log(lists.Favorites.movies[0].title);
+          console.log(lists);
         }}
       />
       <Button

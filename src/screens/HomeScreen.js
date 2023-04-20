@@ -31,10 +31,11 @@ const HomeScreen = ({ navigation }) => {
   return (
     <ScrollView
       style={{
-        backgroundColor: "#A63446",
+        backgroundColor: "#b5838d",
       }}
     >
       <SafeAreaView style={{ flex: 1 }}>
+        <Text style={styles.title}>Explore</Text>
         <Text style={styles.title}>Upcoming Movies</Text>
         <FlatList
           data={data}
@@ -79,6 +80,7 @@ const HomeScreen = ({ navigation }) => {
                     item: item.item,
                     backdrop_path: item.item.backdrop_path,
                     poster_path: item.item.poster_path,
+                    rmButton: false,
                   });
                 }}
               >
@@ -107,6 +109,7 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     borderBottomWidth: 2,
     width: 235,
+    // borderWidth: 2,
   },
   container: {
     marginHorizontal: 4,

@@ -9,10 +9,8 @@ import { Ionicons } from "@expo/vector-icons";
 import AccountScreen from "./src/screens/AccountScreen";
 import LibraryStackScreen from "./src/navigators/LibraryStackScreen";
 import HomeStackScreen from "./src/navigators/HomeStackScreen";
-
 import { Provider } from "react-redux";
 import store from "./src/storage/store";
-
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
@@ -27,10 +25,10 @@ const App = () => {
           <MainTab.Navigator
             initialRouteName="HomeStack"
             activeColor="black"
-            // shifting
-            barStyle={{ backgroundColor: "#441515" }}
+            barStyle={{ backgroundColor: "#6d6875" }}
             inactiveColor="white"
             labeled={false}
+            shifting={true}
           >
             <MainTab.Screen
               name="HomeStack"
@@ -56,7 +54,9 @@ const App = () => {
                 },
               }}
             />
-            <MainTab.Screen
+
+            {/* I decided not to implement accounts/login etc. just to move on to the next project. This part can be uncommented to make the app return to its initialstate 
+             <MainTab.Screen
               name="Account"
               component={AccountScreen}
               options={{
@@ -64,7 +64,7 @@ const App = () => {
                   return <AntDesign name="user" size={24} color={color} />;
                 },
               }}
-            />
+            /> */}
           </MainTab.Navigator>
         </NavigationContainer>
       </PersistGate>

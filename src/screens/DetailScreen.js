@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { getDetails } from "../functions/getDetails";
 import { ImageBackground } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Interact from "../components/Interact";
-import COLORS from "../constants/COLORS";
 
 const DetailScreen = ({ route, navigation }) => {
   const [details, setDetails] = useState({});
-  const { id, backdrop_path, poster_path, item } = route.params;
+  const { id, backdrop_path, poster_path, item, currentList, rmButton } =
+    route.params;
 
-  const loadDeets = useState(async () => {
-    const deets = await getDetails(id);
-    setDetails({ overview: deets[0].data.overview });
+  useEffect(() => {
+    const loadDeets = async () => {
+      const deets = await getDetails(id);
+      setDetails({ overview: deets[0].data.overview });
+    };
+    loadDeets();
   }, []);
 
   let posterUrl = "https://image.tmdb.org/t/p/original" + poster_path;
@@ -24,7 +27,6 @@ const DetailScreen = ({ route, navigation }) => {
           source={{ uri: posterUrl }}
           style={styles.imageBg}
           resizeMode="cover"
-          blurRadius={2}
         >
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.overview}>{details.overview}</Text>
@@ -33,6 +35,9 @@ const DetailScreen = ({ route, navigation }) => {
             id={item.id}
             title={item.title}
             poster_path={poster_path}
+            currentList={currentList}
+            navigation={navigation}
+            rmButton={rmButton}
           ></Interact>
         </ImageBackground>
       </View>
@@ -55,11 +60,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   overview: {
-    color: "white",
+    color: "black",
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: COLORS.pinkish_fade,
+    backgroundColor: "#B5446E",
     borderRadius: 10,
     textAlign: "justify",
     paddingHorizontal: 16,
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: COLORS.dark_blue,
+    backgroundColor: "#B5446E",
     borderRadius: 10,
     textAlign: "justify",
     paddingHorizontal: 16,

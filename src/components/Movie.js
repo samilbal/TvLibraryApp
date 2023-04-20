@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet, Button } from "react-native";
 
 const Movie = ({ title, poster_path }) => {
   let url = "https://image.tmdb.org/t/p/original" + poster_path;
@@ -9,12 +9,8 @@ const Movie = ({ title, poster_path }) => {
       <ImageBackground
         source={{ uri: url }}
         resizeMode="stretch"
-        style={styles.image}
-      >
-        <Text style={styles.text} ellipsizeMode="tail" numberOfLines={1}>
-          {title}
-        </Text>
-      </ImageBackground>
+        style={[styles.image, styles.dropShadow]}
+      ></ImageBackground>
     </View>
   );
 };
@@ -30,18 +26,27 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     padding: 8,
-    borderRadius: 11,
+    borderRadius: 24,
     overflow: "hidden",
     justifyContent: "flex-end",
+    borderColor: "transparent",
+    borderWidth: 6,
   },
   text: {
-    color: "white",
-    fontSize: 12,
-    lineHeight: 84,
+    color: "black",
+    fontSize: 16,
+    lineHeight: 24,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#000000c1",
+    backgroundColor: "rgba(0, 0, 0, 0)",
     borderRadius: 10,
+    marginBottom: 10,
+  },
+  dropShadow: {
+    shadowColor: "#000",
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 2,
   },
 });
 

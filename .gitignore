@@ -10,6 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+src/api/Tmdb.js
+
 # macOS
 .DS_Store
 
